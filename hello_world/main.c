@@ -1,8 +1,6 @@
-echo '#include <stdio.h>
-
+#include <stdio.h>
 int main(void)
 {
-    printf("Hello, world\\n");
-    return (0);
-}' > main.c
-
+printf("Hello, World!\n");
+    return 0;
+}
