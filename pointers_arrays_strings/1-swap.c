@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * swap_int - flemme
+ * swap_int - tkt
  * @a: a
  * @b: a
  * Return: nothing
