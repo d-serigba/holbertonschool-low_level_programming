@@ -2,25 +2,24 @@
 
 /**
  * _strchr - Locates a character in a string
- * @s: String to search
+ * @s: Pointer to the string
  * @c: Character to locate
  *
- * Description: This function searches for the first occurrence
- * of the character c in the string s
- *
- * Return: Pointer to the first occurrence of c, or NULL if not found
+ * Return: Pointer to the first occurrence of c in s,
+ * or NULL if character is not found
  */
 char *_strchr(char *s, char c)
 {
-	int i;
-
-	for (i = 0; s[i] >= '\0'; i++)
+	while (*s)
 	{
-		if (s[i] == c)
-		{
-			return (&s[i]);
-		}
+		if (*s == c)
+			return (s);
+		s++;
 	}
+
+	if (*s == c)
+		return (s);
 
 	return (NULL);
 }
+
