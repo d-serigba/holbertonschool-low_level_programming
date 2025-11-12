@@ -1,41 +1,44 @@
-#include "main.h"
 #include <stdlib.h>
 
 /**
- * concat - coller deux chaîne de caractèredans dans un espace mémoire,
- * en utilisant malloc.
- * @s1 contenue de la chaîne a coller a s2.
- * @s2 contenue a coler suite a s1.
+ * str_concat - concatenates two strings
+ * @s1: first string
+ * @s2: second string
  *
- * Return: buffer ou NULL si ça fonctionne pas,
- * et la chaîne doit être traiter comme vide.
+ * Return: pointer to newly allocated space in memory containing s1 + s2,
+ *         or NULL on failure
  */
 char *str_concat(char *s1, char *s2)
 {
-	unsigned int i, j, size1, size2;
-	char *buffer;
+    char *concat;
+    unsigned int i, j, len1 = 0, len2 = 0;
 
-	if (s1 == NULL)
-		s1 = "";
+    if (s1 == NULL)
+        s1 = "";
+    if (s2 == NULL)
+        s2 = "";
 
-	if (s2 == NULL)
-		s2 = "";
+    /* Find lengths of s1 and s2 */
+    while (s1[len1])
+        len1++;
+    while (s2[len2])
+        len2++;
 
-	for (size1 = 0; s1[size1] != '\0'; size1++)
-		;
-	for (size2 = 0; s2[size2] != '\0'; size2++)
-		;
-	buffer = malloc(sizeof(char) * (size1 + size2 + 1));
-	if (buffer == NULL)
-		return(NULL);
+    /* Allocate memory for concatenated string + null terminator */
+    concat = malloc(sizeof(char) * (len1 + len2 + 1));
+    if (concat == NULL)
+        return (NULL);
 
-	for (i = 0; i < size1; i++)
-		buffer[i] = s1[i];
+    /* Copy s1 into concat */
+    for (i = 0; i < len1; i++)
+        concat[i] = s1[i];
 
-	for (j = 0; j < size2; j++)
-		buffer[i + j] = s2[j];
+    /* Copy s2 after s1 */
+    for (j = 0; j < len2; j++)
+        concat[i + j] = s2[j];
 
-	buffer[i + j] = '\0';
+    concat[i + j] = '\0'; /* Null terminate the result */
 
-	return(NULL);
+    return (concat);
 }
+
