@@ -22,4 +22,3 @@ char *str_concat(char *s1, char *s2)
     /* Calculate lengths of both strings */
     len1 = 0;
     while
-}
