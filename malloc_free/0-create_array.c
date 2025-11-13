@@ -1,25 +1,30 @@
 #include "main.h"
 #include <stdlib.h>
 
-/** create_array - créé un tableau de caractère
- * @c: initialisation du tableau
- * @size: taille du tableau à alouer 
- * Return: pointeur vers le tableau NULL if dize = 0 ou si cela echoue
+/**
+ * _strdup - crée une copie d'une chaîne de caractères
+ * @str: chaîne à dupliquer
+ *
+ * Return: pointeur vers la nouvelle chaîne, ou NULL si erreur
  */
-char *create_array(unsigned int size, char c)
+char *_strdup(char *str)
 {
-	unsigned int i;
 	char *buffer;
+	unsigned int i, size;
 
-	if (size == 0)
+	if (str == NULL)
 		return (NULL);
 
-	buffer = malloc(sizeof(char) * size);
-		if (buffer == NULL)
-			return (NULL);
+	for (size = 0; str[size] != '\0'; size++)
+		;
+
+	buffer = malloc(sizeof(char) * (size + 1));
+	if (buffer == NULL)
+		return (NULL);
 
 	for (i = 0; i < size; i++)
-		buffer[i] = c;	
+		buffer[i] = str[i];
+	buffer[i] = '\0';
 
-	return(buffer);
+	return (buffer);
 }
