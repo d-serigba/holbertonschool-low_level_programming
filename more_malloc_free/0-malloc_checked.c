@@ -33,6 +33,5 @@ int main(void)
     printf("\n");
 
     free(arr);
-    return 0; 
+    return 0;
 }
-
