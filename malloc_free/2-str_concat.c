@@ -1,44 +1,41 @@
+#include "main.h"
 #include <stdlib.h>
 
 /**
- * str_concat - concatenates two strings
- * @s1: first string
- * @s2: second string
+ * str_concat - concatène deux chaînes de caractères
+ * dans un nouvel espace mémoire
+ * @s1: première chaîne
+ * @s2: deuxième chaîne
  *
- * Return: pointer to newly allocated space in memory containing s1 + s2,
- *         or NULL on failure
+ * Return: pointeur vers la nouvelle chaîne, ou NULL si échec
  */
 char *str_concat(char *s1, char *s2)
 {
-    char *concat;
-    unsigned int i, j, len1 = 0, len2 = 0;
+	unsigned int i, j, size1, size2;
+	char *buffer;
 
-    if (s1 == NULL)
-        s1 = "";
-    if (s2 == NULL)
-        s2 = "";
+	if (s1 == NULL)
+		s1 = "";
 
-    /* Find lengths of s1 and s2 */
-    while (s1[len1])
-        len1++;
-    while (s2[len2])
-        len2++;
+	if (s2 == NULL)
+		s2 = "";
 
-    /* Allocate memory for concatenated string + null terminator */
-    concat = malloc(sizeof(char) * (len1 + len2 + 1));
-    if (concat == NULL)
-        return (NULL);
+	for (size1 = 0; s1[size1] != '\0'; size1++)
+		;
+	for (size2 = 0; s2[size2] != '\0'; size2++)
+		;
 
-    /* Copy s1 into concat */
-    for (i = 0; i < len1; i++)
-        concat[i] = s1[i];
+	buffer = malloc(sizeof(char) * (size1 + size2 + 1));
+	if (buffer == NULL)
+		return (NULL);
 
-    /* Copy s2 after s1 */
-    for (j = 0; j < len2; j++)
-        concat[i + j] = s2[j];
+	for (i = 0; i < size1; i++)
+		buffer[i] = s1[i];
 
-    concat[i + j] = '\0'; /* Null terminate the result */
+	for (j = 0; j < size2; j++)
+		buffer[i + j] = s2[j];
 
-    return (concat);
+	buffer[i + j] = '\0';
+
+	return (buffer);
 }
-
