@@ -1,25 +1,24 @@
-#ifndef LISTS_H
-#define LISTS_H
-
-#include <stdlib.h>
-#include <stdio.h>
+#include "lists.h"
 
 /**
- * struct dlistint_s - doubly linked list node
- * @n: integer data
- * @prev: points to the previous node
- * @next: points to the next node
+ * list_len - Returns the number of elements in a linked list_t list
+ * @h: A pointer to the head of the list_t list
  *
- * Description: Doubly linked list node structure for Holberton project
+ * Return: The number of elements in the list
  */
-typedef struct dlistint_s
+size_t list_len(const list_t *h)
 {
-	int n;
-	struct dlistint_s *prev;
-	struct dlistint_s *next;
-} dlistint_t;
+	size_t count = 0;
 
-size_t print_dlistint(const dlistint_t *h);
-/* D'autres prototypes d'exercices doublement chaînés suivront ici... */
+	/* On parcourt la liste tant que le pointeur h n'est pas NULL */
+	while (h != NULL)
+	{
+		/* On incrémente le compteur pour chaque nœud trouvé */
+		count++;
 
-#endif
+		/* On passe au nœud suivant */
+		h = h->next;
+	}
+
+	return (count);
+}
