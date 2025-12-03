@@ -1,34 +1,25 @@
+#ifndef LISTS_H
+#define LISTS_H
+
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
-#include "lists.h"
 
 /**
- * main - check the code
+ * struct dlistint_s - doubly linked list node
+ * @n: integer data
+ * @prev: points to the previous node
+ * @next: points to the next node
  *
- * Return: Always EXIT_SUCCESS.
+ * Description: Doubly linked list node structure for Holberton project
  */
-int main(void)
+typedef struct dlistint_s
 {
-    dlistint_t *head;
-    dlistint_t *new;
-    dlistint_t hello = {8, NULL, NULL};
-    size_t n;
+	int n;
+	struct dlistint_s *prev;
+	struct dlistint_s *next;
+} dlistint_t;
 
-    head = &hello;
-    new = malloc(sizeof(dlistint_t));
-    if (new == NULL)
-    {
-        dprintf(2, "Error: Can't malloc\n");
-        return (EXIT_FAILURE);
-    }
-    new->n = 9;
-    head->prev = new;
-    new->next = head;
-    new->prev = NULL;
-    head = new;
-    n = print_dlistint(head);
-    printf("-> %lu elements\n", n);
-    free(new);
-    return (EXIT_SUCCESS);
-}
+size_t print_dlistint(const dlistint_t *h);
+/* D'autres prototypes d'exercices doublement chaînés suivront ici... */
+
+#endif
