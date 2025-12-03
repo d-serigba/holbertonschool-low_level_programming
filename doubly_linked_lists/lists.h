@@ -7,45 +7,21 @@
 #include <stdio.h>
 
 /**
- * struct list_s - singly linked list
- * @str: string - (malloc'ed string)
- * @len: length of the string
- * @next: points to the next node
- *
- * Description: singly linked list node structure
- */
-typedef struct list_s
-{
-	char *str;
-	unsigned int len;
-	struct list_s *next;
-} list_t;
-
-
-/**
  * struct dlistint_s - doubly linked list node
- * @n: integer
- * @prev: points to the previous node
- * @next: points to the next node
+ * @n: integer data stored in the node
+ * @prev: pointer to the previous node in the list
+ * @next: pointer to the next node in the list
  *
- * Description: doubly linked list node structure
+ * Description: doubly linked list node structure for Holberton project
  */
 typedef struct dlistint_s
 {
-	int n;
-	struct dlistint_s *prev;
-	struct dlistint_s *next;
+    int n;
+    struct dlistint_s *prev;
+    struct dlistint_s *next;
 } dlistint_t;
 
-
-/* --- PROTOTYPES --- */
-size_t print_list(const list_t *h);
-size_t list_len(const list_t *h);
-list_t *add_node(list_t **head, const char *str);
-list_t *add_node_end(list_t **head, const char *str);
-void free_list(list_t *head);
-
-/* Ce prototype fonctionnera maintenant car dlistint_t est défini juste au-dessus */
+/* Function prototype */
 size_t print_dlistint(const dlistint_t *h);
 
 #endif
